@@ -47,7 +47,7 @@
                                                                    &kp A  &kp RIGHT  &kp UP  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         lower_layer {
