@@ -10,12 +10,29 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+// mouse scroll settings
+// see: https://github.com/zmkfirmware/zmk/issues/72#issuecomment-2082651732
+#define ZMK_MOUSE_SCRL_VAL 140
+#include <dt-bindings/zmk/mouse.h>
+&msc {
+  acceleration-exponent = <0>;      // Default: 0
+  time-to-max-speed-ms = <300>;    // Default: 300
+};
+
 #define BASE 0
 #define LOWER 1
 #define RAISE 2
 #define ADJUST 3
 
 / {
+    // mouse behaviors - see: https://zmk.dev/docs/behaviors/sensor-rotate
+    behaviors {
+        scroll: scroll {
+            compatible = "zmk,behavior-sensor-rotate";        
+            bindings = <&msc MOVE_UP>, <&msc MOVE_DOWN>;
+            tap-ms = 20;
+        };
+    };
 
    // Activate ADJUST layer by pressing raise and lower
     conditional_layers {
@@ -47,7 +64,7 @@
                                                                    &kp A  &kp RIGHT  &kp UP  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&scroll>;
         };
 
         lower_layer {
