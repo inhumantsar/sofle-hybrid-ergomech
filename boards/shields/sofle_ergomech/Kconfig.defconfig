@@ -3,8 +3,10 @@
 
 if SHIELD_SOFLE_ERGOMECH_LEFT
 
+# max 16 characters
 config ZMK_KEYBOARD_NAME
-    default "Sofle by Ergomech"
+    default "Ergomech Sofle"
+#            ----------------
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
